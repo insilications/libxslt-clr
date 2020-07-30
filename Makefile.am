@@ -2,11 +2,10 @@ SUBDIRS = \
 	libxslt \
 	libexslt \
 	xsltproc \
-	doc \
 	$(PYTHON_SUBDIR) \
 	tests
 
-DIST_SUBDIRS = libxslt libexslt xsltproc python doc tests
+DIST_SUBDIRS = libxslt libexslt xsltproc python tests
 
 confexecdir=$(libdir)
 confexec_DATA = xsltConf.sh
@@ -14,8 +13,6 @@ confexec_DATA = xsltConf.sh
 bin_SCRIPTS = xslt-config
 
 dist-hook: cleanup libxslt.spec
-	touch $(distdir)/doc/*.xml
-	touch $(distdir)/doc/EXSLT/*.xml
 	touch $(distdir)/libxslt/*.syms
 	(cd $(srcdir) ; tar -cf - --exclude CVS --exclude .svn win32 vms examples) | (cd $(distdir); tar xf -)
 
